@@ -1,0 +1,47 @@
+#description h1 {
+  color: #98032b;
+  font-size: 75px;
+}
+
+#description h2 {
+  color: #ca942f;
+  font-size: 65px;
+}
+
+#description p {
+  letter-spacing: 2px;
+}
+
+
+#turf h1 {
+  color: #98032b;
+  font-size: 75px;
+}
+
+
+/*CARDS TURF*/
+#turf .container .row .col .row-container{
+  height: auto;
+  border-radius: .5rem;
+  margin: 2rem 0 2rem 0;
+  cursor: pointer;
+  user-select: none;
+  transition: ease-in-out 1s;
+} 
+
+#turf .container .row .col .row-container:hover{
+  transform: scale(1.1);
+  box-shadow: 1px 12px  22px #2f4647;
+  border: 0;
+}
+
+#turf .container .row .col p {
+letter-spacing: 1px;
+}
+
+#turf .container .row .col img {
+  height: 100%;
+  width: 100%;
+  border-radius: 1rem;
+  padding: .5rem;
+}

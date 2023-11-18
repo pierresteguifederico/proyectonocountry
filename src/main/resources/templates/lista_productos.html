@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous" />
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+          crossorigin="anonymous"></script>
+  <link href='https://fonts.googleapis.com/css?family=Wire+One|Raleway:300' rel='stylesheet' type='text/css'>
+
+  <!-- ESTILOS PARA JAVA -->
+  <link rel="stylesheet" th:href="@{/css/styles.css}">
+  <link rel="stylesheet" th:href="@{/css/header.css}">
+  <link rel="stylesheet" th:href="@{/css/panel.css}">
+
+  <script src="@{/js/panel.js}"></script>
+
+  <!-- HABILITAR ESTILOS PARA VSC-->
+  <!-- <link rel="stylesheet" href="../static/css/styles.css"> -->
+  <!-- <link rel="stylesheet" href="../static/css/header.css"> -->
+  <!-- <link rel="stylesheet" href="../static/css/panel.css"> -->
+
+  <!-- <script src="../static/js/panel.js"></script> -->
+
+  <title>Panel Administrador</title>
+</head>
+
+<body>
+ <header th:replace="~{components/navbar :: header}"></header>
+<main>
+  <section class=" container-fluid ">
+    <div class="row text-center my-2">
+      <p class=" titulo fs-1 fw-bold text-uppercase">Lista de Productos</p>
+    </div>
+    <div class="row">
+      <div class="col col-12" id="container-table">
+        <table class="table align-middle table-hover">
+          <thead class="text-center fs-5">
+          <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Imagen</th>
+            <th scope="col">Nombre</th>
+            <th scope="col">Descripción</th>
+            <th scope="col">Precio Unitario</th>
+            <th scope="col">Categoría</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Acciones</th>
+          </tr>
+          </thead>
+          <tbody id="lista-imagenes">
+          <tr th:each="Producto : ${Producto}">
+            <td data-title="ID" th:text="${Producto.id}" class="text-center"></td>
+            <td data-title="Imagen" id="table-data-img">
+              <img th:src="@{|/productos/imagen/${Producto.id}|}" alt="Imagen" width="100px" />
+            </td>
+            <td data-title="Nombre" th:text="${Producto.nombre}" class="fs-5"></td>
+            <td data-title="Descripción" th:text="${Producto.descripcion}" class="fs-5"></td>
+            <td data-title="Precio Unitario" th:text="${Producto.precioUnitario}" class="fs-5"></td>
+            <td data-title="Categoría" th:text="${Producto.categoria}" class="fs-5"></td>
+            <td data-title="Stock" th:text="${Producto.stock}" class="fs-5"></td>
+            <td data-title="Acciones" id="table-data-acciones" class="text-center" >
+              <a th:href="'/productos/actualizar_producto/' + ${Producto.id}">
+                <button type="button" class="btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                       class="bi bi-pencil-square" viewBox="0 0 16 16">
+                    <path
+                            d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z" />
+                    <path fill-rule="evenodd"
+                          d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z" />
+                  </svg>
+                </button>
+              </a>
+              <a th:href="'/productos/eliminar_producto/' + ${Producto.id}" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
+                <button type="button" class="btn">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                       class="bi bi-trash" viewBox="0 0 16 16">
+                    <path
+                            d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5Zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6Z" />
+                    <path
+                            d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1ZM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118ZM2.5 3h11V2h-11v1Z" />
+                  </svg>
+                </button>
+              </a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <a class="btn-cargar shadow fs-3 fw-bold" href="/productos/crear_productos.html">Cargar Producto</a>
+  </section>
+</main>
+</body>
+<!-- <script th:src="@{/js/navbar.js}"></script> -->
+</html>

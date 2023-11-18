@@ -1,0 +1,42 @@
+<!-----------HEADER START----------->
+<header class="position-sticky top-0 z-3" th:fragment="header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <nav class="navbar navbar-expand-lg m-0 px-2 py-0 py-lg-2 ">
+        <div class="container-fluid d-flex justify-content-between">
+            <a href="#" class="navbar-brand">
+
+                <img class="navbar-brand" th:src="@{/images/logo.png}" alt="Pipicucu"></a>
+
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#menu_lateral">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- offcanvas start -->
+            <section class="offcanvas offcanvas-start" id="menu_lateral" tabindex="-1" aria-labelledby="menuLabel">
+                <div class="offcanvas-header">
+                    <img class="navbar-brand" th:src="@{/images/logo.png}" alt="PipicucuFood"></a>
+
+                    <button class="btn-close" type="button" data-bs-dismiss="offcanvas"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav d-flex justify-content-center gap-0" id="ul-list">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/">Inicio</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#manu">Menú</a>
+                        </li>
+                        <li class="nav-item">
+                            <a id="contactoLink" class="nav-link" href="#contacto">Contacto</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/login" id="login">Admin</a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+            <!-- offcanvas end -->
+        </div>
+    </nav>
+</header>
+<!-----------HEADER ENDS----------->

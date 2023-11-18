@@ -1,0 +1,27 @@
+.container-login {
+  height: calc(100vh - 8rem);
+}
+
+.container-login img {
+  border-radius: 1rem;
+  width: 100%;
+}
+
+.container-login form{
+  width: 100%;
+}
+
+.container-login .btn{
+  background-color: #dcd197;
+}
+
+.container-login .btn:hover{
+  background-color: #bdb06e;
+}
+
+
+@media  screen and (max-width: 1024px) {
+  .container-login img {
+    width: 60%;
+  }
+}
